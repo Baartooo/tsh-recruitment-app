@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import axios from 'axios';
+import useSWR from 'swr';
 
 import { API_ROOT } from 'constants/api';
 
 import { AppRoute } from 'routing/AppRoute.enum';
 
 import s from 'app/products/Products.module.scss';
-import useSWR from 'swr';
 
 const fetcher = async (endpoint: string) => {
   const { data } = await axios.get(API_ROOT + endpoint);
