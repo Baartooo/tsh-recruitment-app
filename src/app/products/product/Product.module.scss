@@ -1,1 +1,21 @@
 @import "src/styles/config";
+
+.product {
+  background-color: $color-white;
+
+  height: 400px;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.product__imageWrapper {
+  width: 100%;
+}
+
+.product__image {
+  height: 170px;
+  
+  object-fit: cover;
+}

@@ -30,7 +30,7 @@ export const Products = () => {
       <div className={s.products__wrapper}>
         {
           items.length &&
-            items.map(item => <Product item={item}/>)
+          items.map(item => <Product item={item} key={item.id} />)
         }
       </div>
     </div>
