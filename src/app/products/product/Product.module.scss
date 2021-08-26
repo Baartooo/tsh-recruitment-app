@@ -1,9 +1,13 @@
 @import "src/styles/config";
 
 .product {
+  display: flex;
+
   background-color: $color-white;
 
   height: 400px;
+
+  flex-direction: column;
 
   border-radius: 10px;
 
@@ -12,10 +16,42 @@
 
 .product__imageWrapper {
   width: 100%;
+  height: 170px;
 }
 
 .product__image {
-  height: 170px;
-  
+  width: 100%;
+  height: 100%;
+
   object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.product__details {
+  display: flex;
+
+  padding: 15px;
+
+  max-width: 100%;
+  height: 100%;
+
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product__name {
+  @include rf(16, 18);
+
+  font-weight: 600;
+
+  color: $color-shark;
+}
+
+.product__description {
+  margin-top: 10px;
+
+  color: $color-manatee;
+  font-size: 14px;
+
+  flex-grow: 1;
 }
