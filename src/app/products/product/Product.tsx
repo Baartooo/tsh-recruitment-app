@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ProductItem } from './Product.types';
+import { Rating } from 'app/shared/rating/Rating';
 
 import s from './Product.module.scss';
 
@@ -17,6 +18,7 @@ export const Product = ({ item }: ProductProps) => {
       <div className={s.product__details}>
         <h2 className={s.product__name}>{item.name}</h2>
         <p className={s.product__description}>{item.description}</p>
+        <Rating rate={item.rating} />
       </div>
     </div>
   );
