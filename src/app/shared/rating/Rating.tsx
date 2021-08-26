@@ -14,7 +14,7 @@ export const Rating = ({ rate }: RatingProps) => {
   const getStars = () => {
     const stars = [];
     for (let i = 0; i < MAX_STARS_NUMBER; i++) {
-      stars.push(<Star filled={i < rate - 1} key={i} />);
+      stars.push(<Star isFilled={i < rate - 1} key={i} />);
     }
     return stars;
   };
