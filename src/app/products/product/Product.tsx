@@ -10,6 +10,7 @@ interface ProductProps {
 }
 
 export const Product = ({ item }: ProductProps) => {
+  console.log(item.rating)
   return (
     <div className={s.product}>
       <div className={s.product__imageWrapper}>
