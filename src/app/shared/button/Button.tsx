@@ -11,7 +11,7 @@ interface IButton {
 
 export const Button = ({ children, isDisabled = false }: IButton) => {
   return (
-    <div className={`${s.button} ${isDisabled ? s.disabled : undefined}`}>
+    <div className={`${s.button} ${isDisabled ? s.disabled : ''}`}>
       {children}
     </div>
   );

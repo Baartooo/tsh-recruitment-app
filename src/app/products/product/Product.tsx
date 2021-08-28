@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ProductItem } from './Product.types';
+
 import { Rating } from 'app/shared/rating/Rating';
 import { Button } from 'app/shared/button/Button';
 

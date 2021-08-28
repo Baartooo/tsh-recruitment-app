@@ -6,8 +6,9 @@ import useSWR from 'swr';
 import { ProductItem } from './product/Product.types';
 import { API_ROOT } from 'constants/api';
 
-import s from 'app/products/Products.module.scss';
 import { Product } from './product/Product';
+
+import s from 'app/products/Products.module.scss';
 
 const fetcher = async (endpoint: string) => {
   const { data } = await axios.get(API_ROOT + endpoint);
@@ -17,7 +18,6 @@ const fetcher = async (endpoint: string) => {
 export const Products = () => {
   const { data } = useSWR('/products', fetcher);
   const [items, setItems] = useState<ProductItem[]>([]);
-
 
   useEffect(() => {
     if (data && data.items) {
