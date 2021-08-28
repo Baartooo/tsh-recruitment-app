@@ -15,7 +15,7 @@ const fetcher = async (endpoint: string) => {
 };
 
 export const Products = () => {
-  const { data, error } = useSWR('/products', fetcher);
+  const { data } = useSWR('/products', fetcher);
   const [items, setItems] = useState<ProductItem[]>([]);
 
 
