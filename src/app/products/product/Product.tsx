@@ -2,6 +2,7 @@ import React from 'react';
 
 import { ProductItem } from './Product.types';
 import { Rating } from 'app/shared/rating/Rating';
+import { Button } from 'app/shared/button/Button';
 
 import s from './Product.module.scss';
 
@@ -10,7 +11,7 @@ interface ProductProps {
 }
 
 export const Product = ({ item }: ProductProps) => {
-  console.log(item.rating)
+
   return (
     <div className={s.product}>
       <div className={s.product__imageWrapper}>
@@ -20,6 +21,9 @@ export const Product = ({ item }: ProductProps) => {
         <h2 className={s.product__name}>{item.name}</h2>
         <p className={s.product__description}>{item.description}</p>
         <Rating rate={item.rating} />
+        <Button isDisabled={item.active}>
+          Show details
+        </Button>
       </div>
     </div>
   );
