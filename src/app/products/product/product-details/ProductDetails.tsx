@@ -1,7 +1,10 @@
 import React from 'react';
 
-import s from './ProductDetails.module.scss';
 import { ProductItem } from '../Product.types';
+
+import { Close } from 'app/shared/close/Close';
+
+import s from './ProductDetails.module.scss';
 
 interface ProductDetailsProps {
   item: ProductItem;
@@ -20,6 +23,9 @@ export const ProductDetails = ({ item, closeDetails }: ProductDetailsProps) => {
           <div className={s.productDetails__details}>
             <p className={s.productDetails__name}>{item.name}</p>
             <p className={s.productDetails__description}>{item.description}</p>
+          </div>
+          <div className={s.productDetails__close}>
+            <Close />
           </div>
         </div>
       </div>
