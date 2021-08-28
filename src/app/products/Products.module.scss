@@ -1,0 +1,28 @@
+@import "src/styles/config";
+
+.products {
+  @include container
+}
+
+.products__wrapper {
+  display: grid;
+
+  width: 100%;
+  height: 10px;
+
+  grid-template-columns: 1fr;
+  grid-column-gap: 25px;
+  grid-row-gap: 30px;
+
+  @media (min-width: $min-mobile) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $min-tablet) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: $min-desktop) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
