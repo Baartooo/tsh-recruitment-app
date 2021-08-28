@@ -1,0 +1,26 @@
+@import "src/styles/config";
+
+.promoLabel {
+  position: absolute;
+  left: 0;
+  top: 15px;
+
+  display: flex;
+
+  width: 75px;
+  height: 25px;
+
+  justify-content: center;
+  align-items: center;
+
+  background-color: $color-sea-buckthorn;
+
+  z-index: 10;
+}
+
+.promoLabel__content {
+  font-size: 14px;
+  font-weight: 600;
+
+  color: $color-white;
+}
