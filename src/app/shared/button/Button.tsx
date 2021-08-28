@@ -9,10 +9,8 @@ interface IButton {
   isDisabled?: boolean;
 }
 
-export const Button = ({ children, isDisabled = false }: IButton) => {
-  return (
-    <div className={`${s.button} ${isDisabled ? s.disabled : ''}`}>
-      {children}
-    </div>
-  );
-};
+export const Button = ({ children, isDisabled = false }: IButton) => (
+  <div className={`${s.button} ${isDisabled ? s.disabled : ''}`}>
+    {children}
+  </div>
+);

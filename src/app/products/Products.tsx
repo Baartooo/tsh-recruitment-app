@@ -7,6 +7,7 @@ import { ProductItem } from './product/Product.types';
 import { API_ROOT } from 'constants/api';
 
 import { Product } from './product/Product';
+import { ProductsEmpty } from './products-empty/ProductsEmpty';
 
 import s from 'app/products/Products.module.scss';
 
@@ -27,12 +28,13 @@ export const Products = () => {
 
   return (
     <div className={s.products}>
-      <div className={s.products__wrapper}>
-        {
-          items.length &&
-          items.map(item => <Product item={item} key={item.id} />)
-        }
-      </div>
+      {
+        items.length
+          ? <div className={s.products__wrapper}>
+            {items.map(item => <Product item={item} key={item.id} />)}
+          </div>
+          : <ProductsEmpty />
+      }
     </div>
   );
 };
