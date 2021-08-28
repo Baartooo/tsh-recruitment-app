@@ -62,4 +62,6 @@
 
 .product__inactiveOverlay {
   @include fit;
+
+  background-color: gray;
 }
