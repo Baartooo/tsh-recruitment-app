@@ -28,5 +28,19 @@
 }
 
 .productsEmpty__textMain {
+  margin-top: 20px;
 
+  font-size: 18px;
+  font-weight: 600;
+
+  color: $color-shark;
+}
+
+.productsEmpty__textSecondary {
+  margin-top: 5px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  color: $color-manatee;
 }

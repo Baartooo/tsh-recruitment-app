@@ -18,11 +18,11 @@ const fetcher = async (endpoint: string) => {
 
 export const Products = () => {
   const { data } = useSWR('/products', fetcher);
-  const [items] = useState<ProductItem[]>([]);
+  const [items, setItems] = useState<ProductItem[]>([]);
 
   useEffect(() => {
     if (data && data.items) {
-      // setItems(data.items);
+      setItems(data.items);
     }
   }, [data]);
 
@@ -35,7 +35,6 @@ export const Products = () => {
           </div>
           : <ProductsEmpty />
       }
-
     </div>
   );
 };
