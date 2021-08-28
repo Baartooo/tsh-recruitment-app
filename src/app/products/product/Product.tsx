@@ -13,19 +13,17 @@ interface ProductProps {
 }
 
 export const Product = ({ item }: ProductProps) => {
-
   return (
     <div className={s.product}>
       {item.promo && <PromoLabel />}
       <div className={s.product__imageWrapper}>
-        <img src={item.image} alt={item.name} className={s.product__image} />
-        {!item.active && <div className={s.product__inactiveOverlay} />}
+        <img src={item.image} alt={item.name} className={`${s.product__image} ${!item.active ? s.inactive : ''}`} />
       </div>
       <div className={s.product__details}>
         <h2 className={s.product__name}>{item.name}</h2>
         <p className={s.product__description}>{item.description}</p>
         <Rating rate={item.rating} />
-        <Button isDisabled={item.active}>
+        <Button isDisabled={!item.active}>
           Show details
         </Button>
       </div>
