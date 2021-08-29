@@ -2,15 +2,19 @@ import React, { SVGProps } from 'react';
 
 import s from './Spinner.module.scss';
 
-export const Spinner = ({ ...props }: SVGProps<SVGSVGElement>) => (
+interface SpinnerProps {
+  isRotating?: boolean;
+}
+
+export const Spinner = ({ isRotating = false, ...svgProps }: SVGProps<SVGSVGElement> & SpinnerProps) => (
   <svg
     width="60"
     height="60"
     viewBox="0 0 60 60"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className={s.spinner}
-    {...props}
+    className={`${s.spinner} ${isRotating ? s.isRotating : ''}`}
+    {...svgProps}
   >
     <g
       id="Group 3"

@@ -37,7 +37,7 @@ export const Products = () => {
               </>
           )
           : <div className={s.products__loading}>
-            <Spinner />
+            <Spinner isRotating />
           </div>
       }
     </div>
