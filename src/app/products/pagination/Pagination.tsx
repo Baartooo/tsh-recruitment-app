@@ -19,35 +19,66 @@ export const Pagination = ({ responseMeta, itemsPerPage, setPage }: IPagination)
   const isOnFirstPage = currentPage === 1;
   const isOnLastPage = currentPage === totalPages;
 
+  const setPageAndScrollToTop = (page: number) => {
+    if (typeof window !== `undefined`) {
+      window.scrollTo(0, 0);
+      setPage(page);
+    }
+  };
+
   const getPages = () => {
     const pagination = [];
     if (totalPages <= 6) {
-      for (let i = 1; i <= totalPages; i++) {
+      for (let i = 0; i < totalPages; i++) {
         pagination.push(
           <div
-            key={i}
+            key={i + 1}
+            className={`${s.pagination__page} ${currentPage === i + 1 ? s.active : ''}`}
+            onClick={() => setPageAndScrollToTop(i + 1)}
+          >
+            {i + 1}
+          </div>,
+        );
+      }
+    } else {
+      if (currentPage === 1 || currentPage === 2) {
+        for (let i = 0; i < 3; i++) {
+          pagination.push(
+            <div
+              className={`${s.pagination__page} ${currentPage === i ? s.active : ''}`}
+              key={i + 1}
+              onClick={() => setPageAndScrollToTop(i + 1)}
+            >
+              {i + 1}
+            </div>,
+          );
+        }
+      } else {
+        for (let i = 0, j = currentPage - 1; i < 3; i++, j++) {
+          pagination.push(
+            <div
+              className={`${s.pagination__page} ${currentPage === i ? s.active : ''}`}
+              key={j}
+              onClick={() => setPageAndScrollToTop(j)}
+            >
+              {j}
+            </div>,
+          );
+        }
+      }
+      pagination.push(<div className={s.pagination__dots}>...</div>);
+      for (let i = totalPages - 3; i <= totalPages; i++) {
+        pagination.push(
+          <div
             className={`${s.pagination__page} ${currentPage === i ? s.active : ''}`}
-            onClick={() => setPage(i)}
+            key={i}
+            onClick={() => setPageAndScrollToTop(i)}
           >
             {i}
           </div>,
         );
       }
-    } else {
-      for (let i = 1; i <= 7; i++) {
-        pagination.push(
-          <div
-            className={`${s.pagination__page} ${currentPage === i ? s.active : ''}`}
-            key={i}
-            onClick={() => setPage(i)}
-          >
-            {i === 4 ? '...' : i}
-          </div>,
-        );
-      }
     }
-
-
     return pagination;
   };
 
@@ -56,14 +87,14 @@ export const Pagination = ({ responseMeta, itemsPerPage, setPage }: IPagination)
       <div className={s.pagination__content}>
         <span
           className={`${s.pagination__extreme} ${isOnFirstPage ? s.disabled : ''}`}
-          onClick={isOnFirstPage ? undefined : () => setPage(1)}
+          onClick={isOnFirstPage ? undefined : () => setPageAndScrollToTop(1)}
         >
           First
         </span>
         {getPages()}
         <span
           className={`${s.pagination__extreme} ${isOnLastPage ? s.disabled : ''}`}
-          onClick={isOnLastPage ? undefined : () => setPage(totalPages)}
+          onClick={isOnLastPage ? undefined : () => setPageAndScrollToTop(totalPages)}
         >
           Last
         </span>
