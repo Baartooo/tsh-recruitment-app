@@ -1,0 +1,30 @@
+@import "src/styles/config";
+
+.pagination {
+  @include container;
+
+  display: flex;
+
+  justify-content: center;
+}
+
+.pagination__content {
+  display: flex;
+}
+
+.pagination__extreme {
+  margin: 0 30px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: $color-shark;
+
+  cursor: pointer;
+
+  &.disabled {
+    color: $color-manatee;
+
+    cursor: default;
+  }
+}

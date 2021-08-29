@@ -8,6 +8,7 @@ import { API_ROOT } from 'constants/API';
 
 import { Product } from './product/Product';
 import { ProductsEmpty } from './products-empty/ProductsEmpty';
+import { Pagination } from './pagination/Pagination';
 
 import s from 'app/products/Products.module.scss';
 
@@ -30,9 +31,13 @@ export const Products = () => {
     <div className={s.products}>
       {
         items.length
-          ? <div className={s.products__wrapper}>
-            {items.map(item => <Product item={item} key={item.id} />)}
-          </div>
+          ? <>
+            <div className={s.products__wrapper}>
+              {items.map(item => <Product item={item} key={item.id} />)}
+
+            </div>
+            <Pagination itemsLength={items.length} currentPage={1} />
+          </>
           : <ProductsEmpty />
       }
     </div>

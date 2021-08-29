@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 import { KeyCode } from 'constants/KeyCodes.enum';
 import { ProductItem } from '../Product.types';
@@ -14,7 +14,7 @@ interface ProductDetailsProps {
 
 export const ProductDetails = ({ item, closeDetails }: ProductDetailsProps) => {
 
-  const closeDetailsIfEscapeIsPressed = (e: KeyboardEvent) => e.code === KeyCode.escape && closeDetails();
+  const closeDetailsIfEscapeIsPressed = useCallback((e: KeyboardEvent) => e.code === KeyCode.escape && closeDetails(), [closeDetails]);
 
   useEffect(() => {
     if (typeof window !== `undefined`) {
@@ -23,7 +23,7 @@ export const ProductDetails = ({ item, closeDetails }: ProductDetailsProps) => {
         window.removeEventListener('keydown', closeDetailsIfEscapeIsPressed);
       };
     }
-  }, []);
+  }, [closeDetailsIfEscapeIsPressed]);
   return (
     <div className={s.productDetails}>
       <div className={s.productDetails__underlay} onClick={closeDetails} />
