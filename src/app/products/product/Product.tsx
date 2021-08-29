@@ -29,7 +29,7 @@ export const Product = ({ item }: ProductProps) => {
         <p className={s.product__description}>{item.description}</p>
         <Rating rate={item.rating} />
         <Button onClick={item.active ? openDetails : undefined} isDisabled={!item.active}>
-          Show details
+          {item.active ? 'Show details' : 'Unavailable'}
         </Button>
       </div>
       {areDetailsVisible && <ProductDetails item={item} closeDetails={closeDetails} />}
