@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useRef } from 'react';
+import React, { Dispatch, SetStateAction, useCallback, useEffect, useRef } from 'react';
 
 import { KeyCode } from 'constants/KeyCodes.enum';
 
@@ -13,26 +13,23 @@ interface HeaderProps {
 export const Header = ({ setSearch }: HeaderProps) => {
   const refInput = useRef<HTMLInputElement>(null);
 
-  const search = () => refInput.current && setSearch(refInput.current.value);
+  const search = useCallback(() => refInput.current && setSearch(refInput.current.value), [setSearch]);
 
-  const searchOnKeyDownEnter = (e: KeyboardEvent) => {
-    if (refInput.current && e.code === KeyCode.enter) {
-      search();
-    }
-  };
+  const searchOnKeyDownEnter = useCallback((e: KeyboardEvent) => e.code === KeyCode.enter && search(), [search]);
 
   useEffect(() => {
-    refInput.current && refInput.current.addEventListener('keydown', searchOnKeyDownEnter);
+    const ref = refInput.current;
+    ref && ref.addEventListener('keydown', searchOnKeyDownEnter);
     return () => {
-      refInput.current && refInput.current.removeEventListener('keydown', searchOnKeyDownEnter);
+      ref && ref.removeEventListener('keydown', searchOnKeyDownEnter);
     };
-  }, [refInput.current]);
+  }, [searchOnKeyDownEnter]);
 
   return (
     <div className={s.header}>
       <div className={s.header__wrapper}>
         <div className={s.header__logo}>
-          <a href={'#'} className={s.header__link}>join.tsh.io</a>
+          <a href={'/'} className={s.header__link}>join.tsh.io</a>
         </div>
 
         <div className={s.header__search}>
