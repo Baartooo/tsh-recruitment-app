@@ -31,7 +31,6 @@ export const Header = ({ setSearch }: HeaderProps) => {
         <div className={s.header__logo}>
           <a href={'/'} className={s.header__link}>join.tsh.io</a>
         </div>
-
         <div className={s.header__search}>
           <input
             type={'text'}
