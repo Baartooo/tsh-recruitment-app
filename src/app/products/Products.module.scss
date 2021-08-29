@@ -2,13 +2,17 @@
 
 .products {
   @include container;
+
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
 }
 
 .products__wrapper {
   display: grid;
 
   width: 100%;
-  height: 10px;
 
   grid-template-columns: 1fr;
   grid-column-gap: 25px;

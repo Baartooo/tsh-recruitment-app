@@ -3,6 +3,8 @@
 .pagination {
   @include container;
 
+  margin: 55px 0;
+
   display: flex;
 
   justify-content: center;
