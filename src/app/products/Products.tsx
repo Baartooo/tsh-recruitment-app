@@ -25,22 +25,24 @@ export const Products = () => {
 
   return (
     <div className={s.products}>
-      {
-        data
-          ? (
-            data.items.length === 0
-              ? <ProductsEmpty />
-              : <>
-                <div className={s.products__list}>
-                  {data.items.map(item => <Product item={item} key={item.id} />)}
-                </div>
-                <Pagination responseMeta={data.meta} setPage={setPage} />
-              </>
-          )
-          : <div className={s.products__loading}>
-            <Spinner isRotating />
-          </div>
-      }
+      <div className={s.products__wrapper}>
+        {
+          data
+            ? (
+              data.items.length === 0
+                ? <ProductsEmpty />
+                : <>
+                  <div className={s.products__list}>
+                    {data.items.map(item => <Product item={item} key={item.id} />)}
+                  </div>
+                  <Pagination responseMeta={data.meta} setPage={setPage} />
+                </>
+            )
+            : <div className={s.products__loading}>
+              <Spinner isRotating />
+            </div>
+        }
+      </div>
     </div>
   );
 };

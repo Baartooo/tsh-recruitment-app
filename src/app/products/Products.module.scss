@@ -1,6 +1,10 @@
 @import "src/styles/config";
 
 .products {
+  width: 100%;
+}
+
+.products__wrapper {
   @include container;
 
   display: flex;
