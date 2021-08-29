@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import axios from 'axios';
 import useSWR from 'swr';
 
-import { ProductItem } from './product/Product.types';
+import { Response } from './Products.types';
 import { API_ROOT } from 'constants/API';
 
 import { Product } from './product/Product';
 import { ProductsEmpty } from './products-empty/ProductsEmpty';
+import { Pagination } from './pagination/Pagination';
+import { Spinner } from 'app/shared/spinner/Spinner';
 
 import s from 'app/products/Products.module.scss';
 
@@ -17,23 +19,27 @@ const fetcher = async (endpoint: string) => {
 };
 
 export const Products = () => {
-  const { data } = useSWR('/products', fetcher);
-  const [items, setItems] = useState<ProductItem[]>([]);
-
-  useEffect(() => {
-    if (data && data.items) {
-      setItems(data.items);
-    }
-  }, [data]);
+  const [page, setPage] = useState<number>(1);
+  const ITEMS_PER_PAGE = 8;
+  const { data } = useSWR<Response>(`/products?limit=${ITEMS_PER_PAGE}&page=${page}`, fetcher);
 
   return (
     <div className={s.products}>
       {
-        items.length
-          ? <div className={s.products__wrapper}>
-            {items.map(item => <Product item={item} key={item.id} />)}
+        data
+          ? (
+            data.items.length === 0
+              ? <ProductsEmpty />
+              : <>
+                <div className={s.products__wrapper}>
+                  {data.items.map(item => <Product item={item} key={item.id} />)}
+                </div>
+                <Pagination responseMeta={data.meta} setPage={setPage} />
+              </>
+          )
+          : <div className={s.products__loading}>
+            <Spinner isRotating />
           </div>
-          : <ProductsEmpty />
       }
     </div>
   );

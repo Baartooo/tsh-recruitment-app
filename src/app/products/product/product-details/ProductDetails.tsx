@@ -23,7 +23,7 @@ export const ProductDetails = ({ item, closeDetails }: ProductDetailsProps) => {
         window.removeEventListener('keydown', closeDetailsIfEscapeIsPressed);
       };
     }
-  }, []);
+  }, [closeDetailsIfEscapeIsPressed]);
   return (
     <div className={s.productDetails}>
       <div className={s.productDetails__underlay} onClick={closeDetails} />
