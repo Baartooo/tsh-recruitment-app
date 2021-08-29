@@ -93,15 +93,30 @@
   flex-grow: 1;
 }
 
-.productDetails__close {
+.productDetails__closeOval {
   position: absolute;
   top: 15px;
   right: 15px;
 
-  width: 35px;
-  height: 35px;
+  display: flex;
+
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
 
-  background-color: $color-athens-gray;
+  justify-content: center;
+  align-items: center;
 
+  background-color: $color-athens-gray;
+  cursor: pointer;
+}
+
+.productDetails__closeWrapper {
+  display: flex;
+
+  width: 20px;
+  height: 20px;
+
+  align-items: center;
+  justify-content: center;
 }

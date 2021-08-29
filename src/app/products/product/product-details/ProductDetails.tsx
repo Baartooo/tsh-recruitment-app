@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
+import { KeyCode } from 'constants/KeyCodes.enum';
 import { ProductItem } from '../Product.types';
 
 import { Close } from 'app/shared/close/Close';
@@ -12,9 +13,20 @@ interface ProductDetailsProps {
 }
 
 export const ProductDetails = ({ item, closeDetails }: ProductDetailsProps) => {
+
+  const closeDetailsIfEscIsPressed = (e: KeyboardEvent) => e.code === KeyCode.escape && closeDetails();
+
+  useEffect(() => {
+    if (typeof window !== `undefined`) {
+      window.addEventListener('keydown', closeDetailsIfEscIsPressed);
+      return () => {
+        window.removeEventListener('keydown', closeDetailsIfEscIsPressed);
+      };
+    }
+  }, []);
   return (
     <div className={s.productDetails}>
-      <div className={s.productDetails__underlay} />
+      <div className={s.productDetails__underlay} onClick={closeDetails} />
       <div className={s.productDetails__wrapper}>
         <div className={s.productDetails__box}>
           <div className={s.productDetails__imageWrapper}>
@@ -24,8 +36,10 @@ export const ProductDetails = ({ item, closeDetails }: ProductDetailsProps) => {
             <p className={s.productDetails__name}>{item.name}</p>
             <p className={s.productDetails__description}>{item.description}</p>
           </div>
-          <div className={s.productDetails__close}>
-            <Close />
+          <div className={s.productDetails__closeOval} onClick={closeDetails}>
+            <div className={s.productDetails__closeWrapper}>
+              <Close width={15} height={15} />
+            </div>
           </div>
         </div>
       </div>
