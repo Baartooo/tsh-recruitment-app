@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 import { ProductItem } from './Product.types';
 
-import { Rating } from 'app/shared/rating/Rating';
 import { Button } from 'app/shared/button/Button';
-import { PromoLabel } from 'app/shared/promo-label/PromoLabel';
 import { ProductDetails } from './product-details/ProductDetails';
+import { PromoLabel } from 'app/shared/promo-label/PromoLabel';
+import { Rating } from 'app/shared/rating/Rating';
 
 import s from './Product.module.scss';
 

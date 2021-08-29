@@ -14,13 +14,13 @@ interface ProductDetailsProps {
 
 export const ProductDetails = ({ item, closeDetails }: ProductDetailsProps) => {
 
-  const closeDetailsIfEscIsPressed = (e: KeyboardEvent) => e.code === KeyCode.escape && closeDetails();
+  const closeDetailsIfEscapeIsPressed = (e: KeyboardEvent) => e.code === KeyCode.escape && closeDetails();
 
   useEffect(() => {
     if (typeof window !== `undefined`) {
-      window.addEventListener('keydown', closeDetailsIfEscIsPressed);
+      window.addEventListener('keydown', closeDetailsIfEscapeIsPressed);
       return () => {
-        window.removeEventListener('keydown', closeDetailsIfEscIsPressed);
+        window.removeEventListener('keydown', closeDetailsIfEscapeIsPressed);
       };
     }
   }, []);
@@ -38,7 +38,7 @@ export const ProductDetails = ({ item, closeDetails }: ProductDetailsProps) => {
           </div>
           <div className={s.productDetails__closeOval} onClick={closeDetails}>
             <div className={s.productDetails__closeWrapper}>
-              <Close width={15} height={15} />
+              <Close />
             </div>
           </div>
         </div>
