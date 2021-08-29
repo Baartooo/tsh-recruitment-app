@@ -43,6 +43,9 @@ export const Header = ({ setSearch }: HeaderProps) => {
             <Search />
           </div>
         </div>
+        <div className={s.header__filters}>
+          <input type={'checkbox'} />
+        </div>
       </div>
     </div>
   );
