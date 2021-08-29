@@ -6,13 +6,12 @@ interface IPagination {
   itemsLength: number;
   currentPage: number;
   pagesAmount: number;
-  isOnFirstPage: boolean;
-  isOnLastPage: boolean;
   setCurrentPage: Dispatch<SetStateAction<number | null>>;
 }
 
-export const Pagination = ({ itemsLength, currentPage, pagesAmount, isOnFirstPage, isOnLastPage }: IPagination) => {
-
+export const Pagination = ({ itemsLength, currentPage, pagesAmount }: IPagination) => {
+  const isOnFirstPage = currentPage === 0;
+  const isOnLastPage = currentPage === pagesAmount;
   return (
     <div className={s.pagination}>
       <div className={s.pagination__content}>
