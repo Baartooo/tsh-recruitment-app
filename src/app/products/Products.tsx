@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
 import useSWR from 'swr';
@@ -21,15 +21,15 @@ export const Products = () => {
   const { data } = useSWR('/products', fetcher);
   const [items, setItems] = useState<ProductItem[]>([]);
   const [currentPage, setCurrentPage] = useState<number | null>(null);
+  const [pages, setPages] = useState<number>(1);
 
   const ITEMS_PER_PAGE = 8;
-
-  const pages = useMemo(() => Math.ceil(items.length / ITEMS_PER_PAGE), [items.length]);
 
   useEffect(() => {
     if (data && data.items) {
       setItems(items);
       setCurrentPage(1);
+      setPages(Math.ceil(data.items.length / ITEMS_PER_PAGE));
     }
   }, [data]);
 

@@ -9,16 +9,26 @@ interface IPagination {
   setCurrentPage: Dispatch<SetStateAction<number | null>>;
 }
 
-export const Pagination = ({ itemsLength, currentPage, pagesAmount }: IPagination) => {
-  const isOnFirstPage = currentPage === 0;
+export const Pagination = ({ itemsLength, currentPage, pagesAmount, setCurrentPage }: IPagination) => {
+  const isOnFirstPage = currentPage === 1;
   const isOnLastPage = currentPage === pagesAmount;
   return (
     <div className={s.pagination}>
       <div className={s.pagination__content}>
-        <span className={`${s.pagination__extreme} ${isOnFirstPage ? s.disabled : ''}`}>First</span>
+        <span
+          className={`${s.pagination__extreme} ${isOnFirstPage ? s.disabled : ''}`}
+          onClick={isOnFirstPage ? undefined : () => setCurrentPage(1)}
+        >
+          First
+        </span>
 
 
-        <span className={`${s.pagination__extreme} ${isOnLastPage ? s.disabled : ''}`}>Last</span>
+        <span
+          className={`${s.pagination__extreme} ${isOnLastPage ? s.disabled : ''}`}
+          onClick={isOnLastPage ? undefined : () => setCurrentPage(pagesAmount)}
+        >
+          Last
+        </span>
       </div>
     </div>
   );
