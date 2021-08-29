@@ -18,7 +18,6 @@
   grid-column-gap: 25px;
   grid-row-gap: 30px;
 
-
   @media (min-width: $min-mobile) {
     grid-template-columns: repeat(2, 1fr);
   }

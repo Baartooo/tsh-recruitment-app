@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { KeyCode } from 'constants/KeyCodes.enum';
 import { ProductItem } from '../Product.types';
@@ -14,7 +14,7 @@ interface ProductDetailsProps {
 
 export const ProductDetails = ({ item, closeDetails }: ProductDetailsProps) => {
 
-  const closeDetailsIfEscapeIsPressed = useCallback((e: KeyboardEvent) => e.code === KeyCode.escape && closeDetails(), [closeDetails]);
+  const closeDetailsIfEscapeIsPressed = (e: KeyboardEvent) => e.code === KeyCode.escape && closeDetails();
 
   useEffect(() => {
     if (typeof window !== `undefined`) {

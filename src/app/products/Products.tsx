@@ -27,7 +27,8 @@ export const Products = () => {
     <div className={s.products}>
       {
         data
-          ? (data.items.length === 0
+          ? (
+            data.items.length === 0
               ? <ProductsEmpty />
               : <>
                 <div className={s.products__wrapper}>
