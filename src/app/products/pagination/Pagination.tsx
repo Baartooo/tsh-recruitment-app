@@ -41,13 +41,37 @@ export const Pagination = ({ responseMeta, itemsPerPage, setPage }: IPagination)
         );
       }
     } else {
-      if (currentPage === 1 || currentPage === 2) {
+      if (currentPage < 3) {
         for (let i = 0; i < 3; i++) {
           pagination.push(
             <div
               className={`${s.pagination__page} ${currentPage === i ? s.active : ''}`}
               key={i + 1}
-              onClick={() => setPageAndScrollToTop(i + 1)}
+              onClick={currentPage === i ? undefined : () => setPageAndScrollToTop(i + 1)}
+            >
+              {i + 1}
+            </div>,
+          );
+        }
+        for (let i = totalPages - 2; i <= totalPages; i++) {
+          pagination.push(
+            <div
+              className={`${s.pagination__page} ${currentPage === i ? s.active : ''}`}
+              key={i}
+              onClick={() => setPageAndScrollToTop(i)}
+            >
+              {i}
+            </div>,
+          );
+        }
+      } else if (currentPage > totalPages - 5) {
+        pagination.push(<div className={s.pagination__dots}>...</div>);
+        for (let i = 0; i < totalPages; i++) {
+          pagination.push(
+            <div
+              className={`${s.pagination__page} ${currentPage === i ? s.active : ''}`}
+              key={i + 1}
+              onClick={currentPage === i + 1 ? undefined : () => setPageAndScrollToTop(i + 1)}
             >
               {i + 1}
             </div>,
@@ -59,24 +83,24 @@ export const Pagination = ({ responseMeta, itemsPerPage, setPage }: IPagination)
             <div
               className={`${s.pagination__page} ${currentPage === i ? s.active : ''}`}
               key={j}
-              onClick={() => setPageAndScrollToTop(j)}
+              onClick={currentPage === j ? undefined : () => setPageAndScrollToTop(j)}
             >
               {j}
             </div>,
           );
         }
-      }
-      pagination.push(<div className={s.pagination__dots}>...</div>);
-      for (let i = totalPages - 3; i <= totalPages; i++) {
-        pagination.push(
-          <div
-            className={`${s.pagination__page} ${currentPage === i ? s.active : ''}`}
-            key={i}
-            onClick={() => setPageAndScrollToTop(i)}
-          >
-            {i}
-          </div>,
-        );
+        pagination.push(<div className={s.pagination__dots}>...</div>);
+        for (let i = totalPages - 2; i <= totalPages; i++) {
+          pagination.push(
+            <div
+              className={`${s.pagination__page} ${currentPage === i ? s.active : ''}`}
+              key={i}
+              onClick={() => setPageAndScrollToTop(i)}
+            >
+              {i}
+            </div>,
+          );
+        }
       }
     }
     return pagination;

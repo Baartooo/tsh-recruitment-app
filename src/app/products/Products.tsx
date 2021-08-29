@@ -33,7 +33,7 @@ export const Products = () => {
                 <div className={s.products__wrapper}>
                   {data.items.map(item => <Product item={item} key={item.id} />)}
                 </div>
-                <Pagination responseMeta={data.meta} itemsPerPage={ITEMS_PER_PAGE} setPage={setPage} />
+                <Pagination responseMeta={data.meta} setPage={setPage} />
               </>
           )
           : <div className={s.products__loading}>

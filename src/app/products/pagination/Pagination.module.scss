@@ -64,5 +64,10 @@
 
   &.active {
     color: $color-dodger-blue;
+    cursor: default;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }
