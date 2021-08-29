@@ -21,12 +21,13 @@ const fetcher = async (endpoint: string) => {
 
 export const Products = () => {
   const [page, setPage] = useState<number>(1);
+  const [search, setSearch] = useState<string>('');
   const ITEMS_PER_PAGE = 8;
-  const { data } = useSWR<Response>(`/products?limit=${ITEMS_PER_PAGE}&page=${page}`, fetcher);
+  const { data } = useSWR<Response>(`/products?limit=${ITEMS_PER_PAGE}&page=${page}&search=${search}`, fetcher);
 
   return (
     <div className={s.products}>
-      <Header />
+      <Header setSearch={setSearch} />
       <div className={s.products__wrapper}>
         {
           data
