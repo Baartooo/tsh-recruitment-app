@@ -31,7 +31,7 @@ export const Products = () => {
             data.items.length === 0
               ? <ProductsEmpty />
               : <>
-                <div className={s.products__wrapper}>
+                <div className={s.products__list}>
                   {data.items.map(item => <Product item={item} key={item.id} />)}
                 </div>
                 <Pagination responseMeta={data.meta} setPage={setPage} />
