@@ -15,7 +15,7 @@
 }
 
 .pagination__extreme {
-  margin: 0 30px;
+  margin: 0 20px;
 
   font-size: 14px;
   font-weight: 600;
@@ -24,9 +24,42 @@
 
   cursor: pointer;
 
+  transition: $transition-leave;
+
+  &:hover {
+    transition: $transition-enter;
+    opacity: .5;
+  }
+
   &.disabled {
     color: $color-manatee;
 
     cursor: default;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.pagination__page {
+  margin: 0 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: $color-shark;
+
+  cursor: pointer;
+
+  transition: $transition-leave;
+
+  &:hover {
+    transition: $transition-enter;
+    opacity: .5;
+  }
+
+  &.active {
+    color: $color-dodger-blue;
   }
 }

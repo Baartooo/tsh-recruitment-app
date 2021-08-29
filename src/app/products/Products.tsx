@@ -34,11 +34,12 @@ export const Products = () => {
   }, [data]);
 
   useEffect(() => {
-    if (currentPage !== null) {
+    if (currentPage !== null && typeof window !== `undefined`) {
       const start = (currentPage - 1) * ITEMS_PER_PAGE;
       const end = currentPage * ITEMS_PER_PAGE;
       const items = data.items.slice(start, end);
       setItems(items);
+      window.scrollTo(0, 0);
     }
   }, [currentPage]);
 
