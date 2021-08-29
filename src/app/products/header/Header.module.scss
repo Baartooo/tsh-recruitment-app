@@ -28,3 +28,50 @@
   color: $color-shark;
   text-decoration: none;
 }
+
+.header__search {
+  position: relative;
+  display: flex;
+
+  margin-left: 105px;
+
+  height: 50px;
+}
+
+.header__searchIcon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+
+  width: 24px;
+  height: 24px;
+
+  transform: translateY(-50%);
+
+  cursor: pointer;
+
+  transition: $transition-leave;
+
+  &:hover {
+    transition: $transition-enter;
+    opacity: .5;
+  }
+}
+
+.header__input {
+  padding-left: 15px;
+
+  width: 390px;
+  height: 100%;
+
+  border-radius: 10px;
+  border: 1px solid $color-gray;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  &:focus {
+    outline: none;
+    border-color: $color-dodger-blue;
+  }
+}
