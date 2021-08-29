@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
 import s from './Star.module.scss';
 
@@ -6,7 +6,7 @@ interface StarProps {
   isFilled?: boolean;
 }
 
-export const Star = ({ isFilled = false }: StarProps) => {
+export const Star = ({ isFilled = false, ...svgProps }: StarProps & SVGProps<SVGSVGElement>) => {
 
   if (isFilled) {
     return (
@@ -17,6 +17,7 @@ export const Star = ({ isFilled = false }: StarProps) => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={s.star}
+        {...svgProps}
       >
         <path
           d="M10 15.27L16.18 19L14.54 11.97L20 7.24L12.81 6.63L10 0L7.19 6.63L0 7.24L5.46 11.97L3.82 19L10 15.27Z"
@@ -34,6 +35,7 @@ export const Star = ({ isFilled = false }: StarProps) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={s.star}
+      {...svgProps}
     >
       <path
         fillRule="evenodd"

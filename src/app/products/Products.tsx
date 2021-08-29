@@ -4,7 +4,7 @@ import axios from 'axios';
 import useSWR from 'swr';
 
 import { ProductItem } from './product/Product.types';
-import { API_ROOT } from 'constants/api';
+import { API_ROOT } from 'constants/API';
 
 import { Product } from './product/Product';
 import { ProductsEmpty } from './products-empty/ProductsEmpty';

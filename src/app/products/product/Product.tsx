@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { ProductItem } from './Product.types';
 
-import { Rating } from 'app/shared/rating/Rating';
 import { Button } from 'app/shared/button/Button';
+import { ProductDetails } from './product-details/ProductDetails';
 import { PromoLabel } from 'app/shared/promo-label/PromoLabel';
+import { Rating } from 'app/shared/rating/Rating';
 
 import s from './Product.module.scss';
 
@@ -13,6 +14,10 @@ interface ProductProps {
 }
 
 export const Product = ({ item }: ProductProps) => {
+  const [areDetailsVisible, setAreDetailsVisible] = useState<boolean>(false);
+
+  const openDetails = () => setAreDetailsVisible(true);
+  const closeDetails = () => setAreDetailsVisible(false);
   return (
     <div className={s.product}>
       {item.promo && <PromoLabel />}
@@ -23,10 +28,11 @@ export const Product = ({ item }: ProductProps) => {
         <h2 className={s.product__name}>{item.name}</h2>
         <p className={s.product__description}>{item.description}</p>
         <Rating rate={item.rating} />
-        <Button isDisabled={!item.active}>
+        <Button onClick={item.active ? openDetails : undefined} isDisabled={!item.active}>
           Show details
         </Button>
       </div>
+      {areDetailsVisible && <ProductDetails item={item} closeDetails={closeDetails} />}
     </div>
   );
 };
