@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import axios from 'axios';
 import useSWR from 'swr';
 
-import { ProductItem } from './product/Product.types';
+import { Response } from './Products.types';
 import { API_ROOT } from 'constants/API';
 
 import { Product } from './product/Product';
 import { ProductsEmpty } from './products-empty/ProductsEmpty';
 import { Pagination } from './pagination/Pagination';
+import { Spinner } from 'app/shared/spinner/Spinner';
 
 import s from 'app/products/Products.module.scss';
 
@@ -18,50 +19,26 @@ const fetcher = async (endpoint: string) => {
 };
 
 export const Products = () => {
-  const { data } = useSWR('/products', fetcher);
-  const [items, setItems] = useState<ProductItem[]>([]);
-  const [currentPage, setCurrentPage] = useState<number | null>(null);
-  const [pages, setPages] = useState<number>(1);
-
+  const [page, setPage] = useState<number>(1);
   const ITEMS_PER_PAGE = 8;
-
-  useEffect(() => {
-    if (data && data.items) {
-      setItems(items);
-      setCurrentPage(1);
-      setPages(Math.ceil(data.items.length / ITEMS_PER_PAGE));
-    }
-  }, [data]);
-
-  useEffect(() => {
-    if (currentPage !== null && typeof window !== `undefined`) {
-      const start = (currentPage - 1) * ITEMS_PER_PAGE;
-      const end = currentPage * ITEMS_PER_PAGE;
-      const items = data.items.slice(start, end);
-      setItems(items);
-      window.scrollTo(0, 0);
-    }
-  }, [currentPage]);
+  const { data } = useSWR<Response>(`/products?limit=${ITEMS_PER_PAGE}&page=${page}`, fetcher);
 
   return (
     <div className={s.products}>
       {
-        items.length
-          ? <>
-            <div className={s.products__wrapper}>
-              {items.map(item => <Product item={item} key={item.id} />)}
-            </div>
-            {
-              currentPage !== null &&
-              <Pagination
-                itemsLength={items.length}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-                pagesAmount={pages}
-              />
-            }
-          </>
-          : <ProductsEmpty />
+        data
+          ? (data.items.length === 0
+              ? <ProductsEmpty />
+              : <>
+                <div className={s.products__wrapper}>
+                  {data.items.map(item => <Product item={item} key={item.id} />)}
+                </div>
+                <Pagination responseMeta={data.meta} itemsPerPage={ITEMS_PER_PAGE} setPage={setPage} />
+              </>
+          )
+          : <div className={s.products__loading}>
+            <Spinner />
+          </div>
       }
     </div>
   );
