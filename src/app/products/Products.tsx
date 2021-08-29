@@ -12,6 +12,7 @@ import { Pagination } from './pagination/Pagination';
 import { Spinner } from 'app/shared/spinner/Spinner';
 
 import s from 'app/products/Products.module.scss';
+import { Header } from './header/Header';
 
 const fetcher = async (endpoint: string) => {
   const { data } = await axios.get(API_ROOT + endpoint);
@@ -25,6 +26,7 @@ export const Products = () => {
 
   return (
     <div className={s.products}>
+      <Header />
       <div className={s.products__wrapper}>
         {
           data

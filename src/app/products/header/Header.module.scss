@@ -4,11 +4,27 @@
   width: 100%;
   height: 145px;
 
+  margin-bottom: 35px;
+
   background-color: $color-white;
 }
 
 .header__wrapper {
   @include container;
 
+  display: flex;
 
+  height: 100%;
+
+  align-items: center;
+}
+
+.header__logo {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.header__link {
+  color: $color-shark;
+  text-decoration: none;
 }
