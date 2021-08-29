@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
 import s from './Close.module.scss';
 
-export const Close = () => (
+export const Close = ({ ...props }: SVGProps<SVGSVGElement>) => (
   <svg
     width="15"
     height="15"
@@ -10,6 +10,7 @@ export const Close = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className={s.close}
+    {...props}
   >
     <g id="close">
       <path
