@@ -6,13 +6,13 @@ import useSWR from 'swr';
 import { Response } from './Products.types';
 import { API_ROOT } from 'constants/API';
 
+import { Spinner } from 'app/shared/spinner/Spinner';
 import { Product } from './product/Product';
 import { ProductsEmpty } from './products-empty/ProductsEmpty';
 import { Pagination } from './pagination/Pagination';
-import { Spinner } from 'app/shared/spinner/Spinner';
+import { Header } from './header/Header';
 
 import s from 'app/products/Products.module.scss';
-import { Header } from './header/Header';
 
 const fetcher = async (endpoint: string) => {
   const { data } = await axios.get(API_ROOT + endpoint);
