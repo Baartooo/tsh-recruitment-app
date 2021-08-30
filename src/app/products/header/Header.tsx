@@ -48,8 +48,12 @@ export const Header = ({ setSearch, setIsActive, setIsPromo }: HeaderProps) => {
           </div>
         </div>
         <div className={s.header__filters}>
-          <Checkbox label={'Active'} setChecked={setIsActive} />
-          <Checkbox label={'Promo'} setChecked={setIsPromo} />
+          <div className={s.header__checkbox}>
+            <Checkbox label={'Active'} setChecked={setIsActive} />
+          </div>
+          <div className={s.header__checkbox}>
+            <Checkbox label={'Promo'} setChecked={setIsPromo} />
+          </div>
         </div>
         <div className={s.header__button}>
           <Button isOutlined>
