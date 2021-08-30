@@ -15,9 +15,9 @@ export const getPagination = (totalPages: number, currentPage: number): number[]
       for (let i = totalPages - 2; i <= totalPages; i++) {
         pagination.push(i);
       }
-    } else if (currentPage > totalPages - 6) {
+    } else if (currentPage > totalPages - 5) {
       pagination.push(-1);
-      for (let i = totalPages - 6; i <= totalPages; i++) {
+      for (let i = totalPages - 5; i <= totalPages; i++) {
         pagination.push(i);
       }
     } else {
