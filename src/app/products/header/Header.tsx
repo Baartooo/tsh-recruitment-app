@@ -10,8 +10,8 @@ import s from './Header.module.scss';
 
 interface HeaderProps {
   setSearch: Dispatch<SetStateAction<string>>;
-  setIsActive: Dispatch<SetStateAction<boolean>>;
-  setIsPromo: Dispatch<SetStateAction<boolean>>;
+  setIsActive: (isChecked: boolean) => void;
+  setIsPromo: (isChecked: boolean) => void;
 }
 
 export const Header = ({ setSearch, setIsActive, setIsPromo }: HeaderProps) => {

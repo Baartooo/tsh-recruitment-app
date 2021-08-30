@@ -31,40 +31,37 @@ export const Pagination = ({ responseMeta, setPage }: IPagination) => {
   return (
     <div className={s.pagination}>
       <div className={s.pagination__content}>
-        <a
-          href={'#'}
+        <button
           tabIndex={isOnFirstPage ? -1 : undefined}
           className={`${s.pagination__extreme} ${isOnFirstPage ? s.disabled : ''}`}
           onClick={isOnFirstPage ? undefined : () => setPageAndScrollToTop(1)}
         >
           First
-        </a>
+        </button>
         {
           pagination.map(value => {
             if (value === -1) {
               return <div className={s.pagination__dots} key={value}>...</div>;
             } else {
               return (
-                <a
-                  href={'#'}
+                <button
                   className={`${s.pagination__page} ${currentPage === value ? s.active : ''}`}
                   key={value}
                   onClick={currentPage === value ? undefined : () => setPageAndScrollToTop(value)}
                 >
                   {value}
-                </a>
+                </button>
               );
             }
           })
         }
-        <a
-          href={'#'}
+        <button
           tabIndex={isOnLastPage ? -1 : undefined}
           className={`${s.pagination__extreme} ${isOnLastPage ? s.disabled : ''}`}
           onClick={isOnLastPage ? undefined : () => setPageAndScrollToTop(totalPages)}
         >
           Last
-        </a>
+        </button>
       </div>
     </div>
   );
