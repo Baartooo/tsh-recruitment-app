@@ -11,7 +11,11 @@ interface IButton {
 }
 
 export const Button = ({ children, onClick, isDisabled = false, isOutlined = false }: IButton) => (
-  <div onClick={onClick} className={`${s.button} ${isDisabled ? s.disabled : ''} ${isOutlined ? s.outlined : ''}`}>
+  <button
+    tabIndex={isDisabled ? -1 : undefined}
+    onClick={onClick}
+    className={`${s.button} ${isDisabled ? s.disabled : ''} ${isOutlined ? s.outlined : ''}`}
+  >
     {children}
-  </div>
+  </button>
 );
