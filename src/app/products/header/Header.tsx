@@ -9,9 +9,11 @@ import s from './Header.module.scss';
 
 interface HeaderProps {
   setSearch: Dispatch<SetStateAction<string>>;
+  setIsActive: Dispatch<SetStateAction<boolean>>;
+  setIsPromo: Dispatch<SetStateAction<boolean>>;
 }
 
-export const Header = ({ setSearch }: HeaderProps) => {
+export const Header = ({ setSearch, setIsActive, setIsPromo }: HeaderProps) => {
   const refInput = useRef<HTMLInputElement>(null);
 
   const search = useCallback(() => refInput.current && setSearch(refInput.current.value), [setSearch]);
@@ -45,8 +47,8 @@ export const Header = ({ setSearch }: HeaderProps) => {
           </div>
         </div>
         <div className={s.header__filters}>
-          <Checkbox label={'Active'} />
-          <Checkbox label={'Promo'} />
+          <Checkbox label={'Active'} setChecked={setIsActive} />
+          <Checkbox label={'Promo'} setChecked={setIsPromo} />
         </div>
       </div>
     </div>

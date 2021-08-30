@@ -22,12 +22,14 @@ const fetcher = async (endpoint: string) => {
 export const Products = () => {
   const [page, setPage] = useState<number>(1);
   const [search, setSearch] = useState<string>('');
+  const [isActive, setIsActive] = useState<boolean>(false);
+  const [isPromo, setIsPromo] = useState<boolean>(false);
   const ITEMS_PER_PAGE = 8;
-  const { data } = useSWR<Response>(`/products?limit=${ITEMS_PER_PAGE}&page=${page}&search=${search}`, fetcher);
+  const { data } = useSWR<Response>(`/products?limit=${ITEMS_PER_PAGE}&page=${page}&search=${search}${isActive ? '&active=true' : ''}${isPromo ? '&promo=true' : ''}`, fetcher);
 
   return (
     <div className={s.products}>
-      <Header setSearch={setSearch} />
+      <Header setSearch={setSearch} setIsActive={setIsActive} setIsPromo={setIsPromo} />
       <div className={s.products__wrapper}>
         {
           data
