@@ -6,6 +6,7 @@ import { Search } from 'app/shared/search/Search';
 import { Checkbox } from 'app/shared/checkbox/Checkbox';
 
 import s from './Header.module.scss';
+import { Button } from '../../shared/button/Button';
 
 interface HeaderProps {
   setSearch: Dispatch<SetStateAction<string>>;
@@ -49,6 +50,11 @@ export const Header = ({ setSearch, setIsActive, setIsPromo }: HeaderProps) => {
         <div className={s.header__filters}>
           <Checkbox label={'Active'} setChecked={setIsActive} />
           <Checkbox label={'Promo'} setChecked={setIsPromo} />
+        </div>
+        <div className={s.header__button}>
+          <Button isOutlined>
+            Log in
+          </Button>
         </div>
       </div>
     </div>
