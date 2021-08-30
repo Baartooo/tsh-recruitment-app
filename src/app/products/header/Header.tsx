@@ -2,11 +2,11 @@ import React, { Dispatch, SetStateAction, useCallback, useEffect, useRef } from 
 
 import { KeyCode } from 'constants/KeyCodes.enum';
 
-import { Search } from 'app/shared/search/Search';
+import { Button } from 'app/shared/button/Button';
 import { Checkbox } from 'app/shared/checkbox/Checkbox';
+import { Search } from 'app/shared/search/Search';
 
 import s from './Header.module.scss';
-import { Button } from '../../shared/button/Button';
 
 interface HeaderProps {
   setSearch: Dispatch<SetStateAction<string>>;
