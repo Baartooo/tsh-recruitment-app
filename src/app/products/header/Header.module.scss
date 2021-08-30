@@ -79,7 +79,10 @@
 }
 
 .header__filters {
-  display: flex;
+  display: grid;
+  grid-gap: 30px;
 
   margin-left: 25px;
+
+  grid-template-columns: 1fr 1fr;
 }

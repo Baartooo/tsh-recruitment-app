@@ -46,6 +46,7 @@ export const Header = ({ setSearch }: HeaderProps) => {
         </div>
         <div className={s.header__filters}>
           <Checkbox label={'Active'} />
+          <Checkbox label={'Promo'} />
         </div>
       </div>
     </div>
