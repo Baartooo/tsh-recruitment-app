@@ -3,6 +3,7 @@ import React, { Dispatch, SetStateAction, useCallback, useEffect, useRef } from 
 import { KeyCode } from 'constants/KeyCodes.enum';
 
 import { Search } from 'app/shared/search/Search';
+import { Checkbox } from 'app/shared/checkbox/Checkbox';
 
 import s from './Header.module.scss';
 
@@ -44,7 +45,7 @@ export const Header = ({ setSearch }: HeaderProps) => {
           </div>
         </div>
         <div className={s.header__filters}>
-          <input type={'checkbox'} />
+          <Checkbox label={'Active'} />
         </div>
       </div>
     </div>
