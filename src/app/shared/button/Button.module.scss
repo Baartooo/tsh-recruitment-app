@@ -12,7 +12,9 @@
 
   background-color: $color-button-blue-normal;
   color: $color-white;
+  border: 1px solid rgba(0, 0, 0, 0);
 
+  font-family: $font-family;
   font-size: 16px;
   font-weight: 600;
 
@@ -31,6 +33,29 @@
 
     &:hover {
       background-color: $color-button-blue-disabled;
+    }
+  }
+
+  &.outlined {
+    background-color: $color-white;
+    border-color: $color-button-blue-normal;
+    color: $color-button-blue-normal;
+
+    &:hover {
+      border-color: $color-persian-blue;
+      color: $color-persian-blue;
+    }
+
+    &.disabled {
+      border-color: $color-manatee;
+      color: $color-manatee;
+      cursor: default;
+
+      &:hover {
+        background-color: $color-white;
+        border-color: $color-manatee;
+        color: $color-manatee;
+      }
     }
   }
 }

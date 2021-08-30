@@ -1,3 +1,4 @@
 export enum KeyCode {
-  escape = 'Escape'
+  escape = 'Escape',
+  enter = 'Enter'
 }
