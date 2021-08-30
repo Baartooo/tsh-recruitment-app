@@ -1,0 +1,83 @@
+@import "src/styles/config";
+
+.pagination {
+  @include container;
+
+  margin: 55px 0;
+
+  display: flex;
+
+  justify-content: center;
+}
+
+.pagination__content {
+  display: flex;
+
+  button {
+    display: block;
+
+    border: none;
+
+    font-family: $font-family;
+
+    background-color: $color-transparency;
+  }
+}
+
+.pagination__extreme {
+  margin: 0 20px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: $color-shark;
+
+  cursor: pointer;
+
+  transition: $transition-leave;
+
+  &:hover {
+    transition: $transition-enter;
+    opacity: .5;
+  }
+
+  &.disabled {
+    color: $color-manatee;
+
+    cursor: default;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.pagination__page,
+.pagination__dots {
+  margin: 0 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: $color-shark;
+}
+
+.pagination__page {
+  cursor: pointer;
+
+  transition: $transition-leave;
+
+  &:hover {
+    transition: $transition-enter;
+    opacity: .5;
+  }
+
+  &.active {
+    color: $color-dodger-blue;
+    cursor: default;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@import "src/styles/config";
+
+.products {
+  width: 100%;
+}
+
+.products__wrapper {
+  @include container;
+
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+}
+
+.products__list {
+  display: grid;
+
+  width: 100%;
+
+  grid-template-columns: 1fr;
+  grid-column-gap: 25px;
+  grid-row-gap: 30px;
+
+  @media (min-width: $min-mobile) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $min-desktop) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.products__loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  width: 80px;
+  height: 80px;
+
+  transform: translate(-50%, -50%);
+}

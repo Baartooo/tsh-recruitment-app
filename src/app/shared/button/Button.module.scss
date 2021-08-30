@@ -1,0 +1,61 @@
+@import "src/styles/config";
+
+.button {
+  display: flex;
+
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+
+  justify-content: center;
+  align-items: center;
+
+  background-color: $color-button-blue-normal;
+  color: $color-white;
+  border: 1px solid rgba(0, 0, 0, 0);
+
+  font-family: $font-family;
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: $transition-leave background-color;
+
+  &:hover {
+    background-color: $color-button-blue-hover;
+    transition: $transition-enter background-color;
+  }
+
+  &.disabled {
+    background-color: $color-button-blue-disabled;
+    cursor: default;
+
+    &:hover {
+      background-color: $color-button-blue-disabled;
+    }
+  }
+
+  &.outlined {
+    background-color: $color-white;
+    border-color: $color-button-blue-normal;
+    color: $color-button-blue-normal;
+
+    &:hover {
+      border-color: $color-persian-blue;
+      color: $color-persian-blue;
+    }
+
+    &.disabled {
+      border-color: $color-manatee;
+      color: $color-manatee;
+      cursor: default;
+
+      &:hover {
+        background-color: $color-white;
+        border-color: $color-manatee;
+        color: $color-manatee;
+      }
+    }
+  }
+}

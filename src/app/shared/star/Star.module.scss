@@ -1,0 +1,12 @@
+@import "src/styles/config";
+
+.star {
+  width: 15px;
+  height: 15px;
+
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
