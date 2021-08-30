@@ -25,7 +25,12 @@ export const Products = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isPromo, setIsPromo] = useState<boolean>(false);
   const ITEMS_PER_PAGE = 8;
-  const { data } = useSWR<Response>(`/products?limit=${ITEMS_PER_PAGE}&page=${page}&search=${search}${isActive ? '&active=true' : ''}${isPromo ? '&promo=true' : ''}`, fetcher);
+  const queryActive = isActive ? 'active=true' : '';
+  const queryPromo = isPromo ? 'promo=true' : '';
+  const querySearch = `search=${search}`;
+  const queryPage = `page=${page}`;
+  const queryLimit = `limit=${ITEMS_PER_PAGE}`;
+  const { data } = useSWR<Response>(`/products?${queryLimit}&${queryPage}&${querySearch}&${queryActive}&${queryPromo}`, fetcher);
 
   return (
     <div className={s.products}>
