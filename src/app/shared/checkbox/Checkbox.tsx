@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 
 import { Check } from 'app/shared/check/Check';
 
@@ -6,7 +6,7 @@ import s from './Checkbox.module.scss';
 
 interface CheckboxProps {
   label: string;
-  setChecked: Dispatch<SetStateAction<boolean>>;
+  setChecked: (isChecked: boolean) => void;
 }
 
 export const Checkbox = ({ label, setChecked }: CheckboxProps) => {

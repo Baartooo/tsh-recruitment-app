@@ -32,9 +32,21 @@ export const Products = () => {
   const queryLimit = `limit=${ITEMS_PER_PAGE}`;
   const { data } = useSWR<Response>(`/products?${queryLimit}&${queryPage}&${querySearch}&${queryActive}&${queryPromo}`, fetcher);
 
+  const resetPage = () => setPage(1);
+
+  const setIsActiveAndResetPage = (isChecked: boolean) => {
+    resetPage();
+    setIsActive(isChecked);
+  };
+
+  const setIsPromoAndResetPage = (isChecked: boolean) => {
+    resetPage();
+    setIsPromo(isChecked);
+  };
+
   return (
     <div className={s.products}>
-      <Header setSearch={setSearch} setIsActive={setIsActive} setIsPromo={setIsPromo} />
+      <Header setSearch={setSearch} setIsActive={setIsActiveAndResetPage} setIsPromo={setIsPromoAndResetPage} />
       <div className={s.products__wrapper}>
         {
           data

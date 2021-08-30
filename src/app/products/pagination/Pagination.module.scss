@@ -8,14 +8,20 @@
   display: flex;
 
   justify-content: center;
-
-  a {
-    text-decoration: none;
-  }
 }
 
 .pagination__content {
   display: flex;
+
+  button {
+    display: block;
+
+    border: none;
+
+    font-family: $font-family;
+
+    background-color: $color-transparency;
+  }
 }
 
 .pagination__extreme {
