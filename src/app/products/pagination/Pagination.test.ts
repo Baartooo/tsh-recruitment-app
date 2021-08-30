@@ -13,8 +13,13 @@ describe('Pagination', () => {
     expect(pagination).toEqual([1, 2, 3]);
   });
 
-  test('Check pagination elements when more than six pages', () => {
+  test('Check pagination elements when more than six pages and first page', () => {
     const pagination = getPagination(10, 1);
+    expect(pagination).toEqual([1, 2, 3, -1, 8, 9, 10]);
+  });
+
+  test('Check pagination elements when more than six pages and second page', () => {
+    const pagination = getPagination(10, 2);
     expect(pagination).toEqual([1, 2, 3, -1, 8, 9, 10]);
   });
 
