@@ -1,8 +1,6 @@
 import { getPagination } from './Pagination.helper';
 
 describe('Pagination', () => {
-  // -1 value in arrays represents dots in pagination
-
   test('Check pagination elements when six pages', () => {
     const pagination = getPagination(6, 1);
     expect(pagination).toEqual([1, 2, 3, 4, 5, 6]);

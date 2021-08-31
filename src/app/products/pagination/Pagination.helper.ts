@@ -1,3 +1,4 @@
+// -1 value in arrays represents dots in pagination
 export const getPagination = (totalPages: number, currentPage: number): number[] => {
   if (totalPages < currentPage) return [];
 
