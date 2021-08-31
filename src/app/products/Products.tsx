@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import axios from 'axios';
 import useSWR from 'swr';
@@ -34,15 +34,15 @@ export const Products = () => {
 
   const resetPage = () => setPage(1);
 
-  const setIsActiveAndResetPage = (isChecked: boolean) => {
+  const setIsActiveAndResetPage = useCallback((isChecked: boolean) => {
     resetPage();
     setIsActive(isChecked);
-  };
+  }, []);
 
-  const setIsPromoAndResetPage = (isChecked: boolean) => {
+  const setIsPromoAndResetPage = useCallback((isChecked: boolean) => {
     resetPage();
     setIsPromo(isChecked);
-  };
+  }, []);
 
   return (
     <div className={s.products}>
