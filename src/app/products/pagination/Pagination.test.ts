@@ -27,7 +27,7 @@ describe('Pagination', () => {
   });
 
   test('Check pagination elements when coming up to end', () => {
-    const pagination = getPagination(12, 11);
+    const pagination = getPagination(12, 7);
     expect(pagination).toEqual([-1, 7, 8, 9, 10, 11, 12]);
   });
 
