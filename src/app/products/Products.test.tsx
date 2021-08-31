@@ -5,9 +5,9 @@ import { render } from 'tests';
 import { Products } from './Products';
 
 describe('Products', () => {
-  test('Displays page header', async () => {
+  test('Displays logo', async () => {
     const { getByText } = render(<Products />);
 
-    expect(getByText('Products page')).toBeInTheDocument();
+    expect(getByText('join.tsh.io')).toBeInTheDocument();
   });
 });

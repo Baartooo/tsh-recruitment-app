@@ -1,3 +1,4 @@
+// -1 value in arrays represents dots in pagination
 export const getPagination = (totalPages: number, currentPage: number): number[] => {
   if (totalPages < currentPage) return [];
 
@@ -17,7 +18,7 @@ export const getPagination = (totalPages: number, currentPage: number): number[]
       }
     } else if (currentPage > totalPages - 6) {
       pagination.push(-1);
-      for (let i = totalPages - 6; i <= totalPages; i++) {
+      for (let i = totalPages - 5; i <= totalPages; i++) {
         pagination.push(i);
       }
     } else {
