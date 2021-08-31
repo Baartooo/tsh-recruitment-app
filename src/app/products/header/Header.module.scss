@@ -24,7 +24,7 @@
 
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 25px;
-  grid-template-areas: 'logo logIn' 'search search' 'filters nothing';
+  grid-template-areas: 'logo logIn' 'search search' 'filters filters';
 
   @media (min-width: $min-desktop) {
     display: flex;
@@ -121,6 +121,10 @@
 
 .header__checkbox {
   margin-right: 30px;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .header__button {
